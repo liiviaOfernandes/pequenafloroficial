@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ateliê Pequena Flor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --rosa-claro:#f7eef2;
+    --rosa:#e8cbd6;
+    --vinho:#a13a63;
+    --dourado:#c6a06a;
+    --texto:#555;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:white;
+    color:var(--texto);
+}
+
+/* MENU */
+header{
+    background:white;
+    box-shadow:0 2px 15px rgba(0,0,0,.05);
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+}
+
+.logo{
+    width:130px;
+}
+
+.nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav a{
+    text-decoration:none;
+    color:var(--vinho);
+    font-weight:600;
+}
+
+/* HERO */
+.hero{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:50px;
+    padding:60px 20px;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:300px;
+}
+
+.hero-text h1{
+    font-family:'Playfair Display',serif;
+    font-size:3rem;
+    color:var(--vinho);
+    line-height:1.1;
+}
+
+.hero-text p{
+    margin:15px 0 25px;
+    font-size:1rem;
+    color:#777;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 30px;
+    background:var(--vinho);
+    color:white;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* HERO IMG */
+.hero-img{
+    flex:1;
+    min-width:300px;
+}
+
+.hero-img img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,.1);
+}
+
+/* CATEGORIAS */
+.categorias{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:40px 20px;
+}
+
+.cat{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.cat:hover{
+    transform:translateY(-5px);
+}
+
+.cat img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.cat h3{
+    padding:15px;
+    color:var(--vinho);
+}
+
+/* PRODUTOS */
+.section-title{
+    text-align:center;
+    font-size:2rem;
+    color:var(--vinho);
+    margin-top:60px;
+}
+
+.produtos{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:40px 20px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-body{
+    padding:15px;
+}
+
+.card-body h4{
+    color:var(--vinho);
+}
+
+.price{
+    margin-top:5px;
+    font-weight:600;
+}
+
+/*carrinho*/
+.cart-icon{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #ff9ad7d7;
+    color: rgb(112, 80, 80);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.cart-badge{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #5e0721;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-panel{
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    width: 360px;
+    max-height: 80vh;
+    background: #1d1b1b;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+    z-index: 998;
+    transform: translateY(20px);
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.hidden{
+    display: none;
+}
+
+.cart-card{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin: 10px 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.cart-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #eee;
+}
+
+.cart-info{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-title{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.cart-meta{
+    font-size: 12px;
+    color: #777;
+}
+
+.cart-bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.cart-remove{
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #999;
+}
+
+.cart-remove:hover{
+    color: red;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
+    z-index: 997;
+}
+
+/* CARRINHO LATERAL (ESTILO APP) */
+.cart-panel{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: 100vh;
+    background: #f9dced;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+    z-index: 998;
+
+    padding:30px;
+    border-radius:20px;
+    text-align:left;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    
+
+    display: flex;
+    flex-direction: column;
+
+    transform: translateX(100%);
+    transition: transform 0.35s ease-in-out;
+}
+.cart-panel h3{
+    color:var(--vinho);
+    margin-bottom:20px;
+    font-size:2rem;
+
+}
+
+.cart-panel button{
+    display:inline-block;
+    padding:15px 35px;
+    background:var(--vinho);
+    color:white;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.cart-panel button:hover{
+    background:#8a2f53;
+    transform:translateY(-2px);
+}
+
+/* quando abre */
+.cart-panel.open{
+    transform: translateX(0);
+    margin: 20px;
+}
+
+/* estado hidden do overlay */
+.hidden{
+    display: none;
+}
+
+
+footer{
+    text-align:center;
+    padding:30px;
+    margin-top:40px;
+    background:#fafafa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <img src="logo.png" class="logo">
+
+        <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="lacos.html">Laços</a></li>
+            <li><a href="camisetas.html">Camisetas</a></li>
+        </ul>
+    </div>
+</header>
+
+<section class="hero">
+
+    <div class="hero-text">
+        <h1>Ateliê Pequena Flor</h1>
+        <p>Laços e camisetas católicas feitos à mão com amor, delicadeza e devoção.</p>
+        <a href="lacos.html" class="btn">Ver Produtos</a>
+    </div>
+
+    <div class="hero-img">
+        <img src="IMG_3396.jpg" alt="Produtos Ateliê">
+    </div>
+
+</section>
+
+<h2 class="section-title">Categorias</h2>
+
+<section class="categorias">
+
+    <div class="cat">
+        <img src="IMG_3137.jpg">
+        <h3>Laços Personalizados</h3>
+    </div>
+
+    <div class="cat">
+        <img src="camisa-branca.png">
+        <h3>Camisetas</h3>
+    </div>
+
+    <div class="cat">
+        <img src="IMG_9402.jpg">
+        <h3>Laços para Batizado</h3>
+    </div>
+
+    <div class="cat">
+        <img src="IMG_1759.jpg">
+        <h3>Faixas para bebês</h3>
+    </div>
+
+</section>
+
+
+<div class="cart-icon" onclick="abrirCarrinho()">
+    🛒
+    <span id="cart-badge" class="cart-badge">0</span>
+</div>
+
+<div id="cart-panel" class="cart-panel">
+    <h2>Meu Pedido</h2>
+
+    <div id="cart-items"></div>
+
+    <div id="cart-total"></div>
+
+    <button onclick="enviarPedido()">
+        Finalizar Pedido
+    </button>
+</div>
+
+<footer>
+    <p>@ateliepequenaflor • WhatsApp (34) 99999-9999</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ateliê Pequena Flor</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --rosa-claro:#f7eef2;
+    --rosa:#e8cbd6;
+    --vinho:#a13a63;
+    --dourado:#c6a06a;
+    --texto:#555;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--rosa-claro);
+    color:var(--texto);
+}
+
+header{
+    text-align:center;
+    padding:40px 20px;
+}
+
+.menu-topo{
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    box-shadow:0 2px 15px rgba(0,0,0,.05);
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.menu-topo ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+.menu-topo a{
+    text-decoration:none;
+    color:var(--vinho);
+    font-weight:600;
+}
+
+.logo{
+    width:140px;
+    margin:0;
+}
+
+h1{
+    font-family:'Playfair Display',serif;
+    color:var(--vinho);
+    font-size:3rem;
+}
+
+.subtitulo{
+    margin-top:10px;
+    font-size:1rem;
+    letter-spacing:2px;
+}
+
+.hero{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:60px;
+    padding:50px 20px;
+    flex-wrap:wrap;
+}
+
+.produto{
+    flex:1;
+    min-width:300px;
+    text-align:center;
+}
+
+.produto img{
+    width:100%;
+    max-width:450px;
+    transition:.4s;
+    filter:drop-shadow(0 15px 25px rgba(0,0,0,.12));
+}
+
+.produto img:hover{
+    transform:scale(1.03);
+}
+
+.info{
+    flex:1;
+    min-width:300px;
+}
+
+.info h2{
+    font-size:2.5rem;
+    color:var(--vinho);
+    margin-bottom:15px;
+}
+
+.preco{
+    font-size:2rem;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.cores{
+    display:flex;
+    gap:15px;
+    margin:25px 0;
+}
+
+.cor{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    cursor:pointer;
+    border:3px solid white;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.bege{
+    background:#c9b08a;
+}
+
+.branca{
+    background:#ffffff;
+    border:2px solid #ddd;
+}
+
+.marrom{
+    background:#6b4a2b;
+}
+
+.preta{
+    background:#222;
+}
+
+.tam{
+    display:flex;
+    gap:12px;
+    margin:15px 0 30px;
+    flex-wrap:wrap;
+}
+
+.tamanho{
+    width:55px;
+    height:55px;
+    border-radius:12px;
+    background:white;
+    border:2px solid var(--rosa);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.tamanho:hover{
+    border-color:var(--vinho);
+    transform:translateY(-2px);
+}
+
+.tamanho.ativo{
+    background:var(--vinho);
+    color:white;
+    border-color:var(--vinho);
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:var(--vinho);
+    color:white;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#8a2f53;
+    transform:translateY(-2px);
+}
+
+/* Cards Diferenciais */
+.diferenciais{
+    padding:80px 20px;
+}
+
+.diferenciais h3{
+    text-align:center;
+    color:var(--vinho);
+    font-size:2rem;
+    margin-bottom:40px;
+}
+
+.cards{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.card span{
+    font-size:2rem;
+}
+
+.card h4{
+    margin:15px 0;
+    color:var(--vinho);
+}
+
+/* Sobre */
+.sobre{
+    max-width:900px;
+    margin:auto;
+    padding:80px 20px;
+    text-align:center;
+}
+
+.sobre h3{
+    color:var(--vinho);
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:30px;
+    background:white;
+    margin-top:40px;
+}
+
+footer a{
+    color:var(--vinho);
+    text-decoration:none;
+}
+
+/*carrinho*/
+.cart-icon{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #ff9ad7d7;
+    color: rgb(112, 80, 80);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.cart-badge{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #5e0721;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-panel{
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    width: 360px;
+    max-height: 80vh;
+    background: #1d1b1b;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+    z-index: 998;
+    transform: translateY(20px);
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.hidden{
+    display: none;
+}
+
+.cart-card{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin: 10px 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.cart-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #eee;
+}
+
+.cart-info{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-title{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.cart-meta{
+    font-size: 12px;
+    color: #777;
+}
+
+.cart-bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.cart-remove{
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #999;
+}
+
+.cart-remove:hover{
+    color: red;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
+    z-index: 997;
+}
+
+/* CARRINHO LATERAL (ESTILO APP) */
+.cart-panel{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: 100vh;
+    background: #f9dced;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+    z-index: 998;
+
+    padding:30px;
+    border-radius:20px;
+    text-align:left;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    
+
+    display: flex;
+    flex-direction: column;
+
+    transform: translateX(100%);
+    transition: transform 0.35s ease-in-out;
+}
+.cart-panel h3{
+    color:var(--vinho);
+    margin-bottom:20px;
+    font-size:2rem;
+
+}
+
+.cart-panel button{
+    display:inline-block;
+    padding:15px 35px;
+    background:var(--vinho);
+    color:white;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.cart-panel button:hover{
+    background:#8a2f53;
+    transform:translateY(-2px);
+}
+
+/* quando abre */
+.cart-panel.open{
+    transform: translateX(0);
+    margin: 20px;
+}
+
+/* estado hidden do overlay */
+.hidden{
+    display: none;
+}
+
+/* Responsividade */
+@media(max-width:768px){
+
+    h1{
+        font-size:2.2rem;
+    }
+
+    .info h2{
+        font-size:2rem;
+    }
+
+    .hero{
+        padding-top:20px;
+    }
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+
+    <nav class="menu-topo">
+
+        <a href="index.html" class="logo-link">
+            <img src="logo.png" class="logo" alt="Pequena Flor">
+        </a>
+
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="lacos.html">Laços</a></li>
+            <li><a href="camisetas.html">Camisetas</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+        </ul>
+
+    </nav>
+
+</header>
+
+<!--Camiseta1-->
+<section class="hero">
+    <div class="produto">
+    <img id="imagemProduto"
+    src="camisa-bege.png"
+    alt="Camiseta">
+</div>
+
+    <div class="info">
+        <h2>Camiseta Nossa Senhora do Carmo</h2>
+        <p>Camiseta católica confeccionada com tecido confortável e estampa exclusiva.
+Disponível em quatro cores.</p>
+        <div class="preco">
+            R$ 79,90
+        </div>
+        <h4>Tamanho:</h4>
+        <div class="tam">
+            <div class="tamanho ativo" onclick="selecionarTamanho(this)">P</div>
+            <div class="tamanho" onclick="selecionarTamanho(this)">M</div>
+            <div class="tamanho" onclick="selecionarTamanho(this)">G</div>
+            <div class="tamanho" onclick="selecionarTamanho(this)">GG</div>
+        </div>
+        <h4>Escolha a cor:</h4>
+        <div class="cores">
+            <div class="cor bege"
+            onclick="trocarCor('bege')"
+            title="Bege"></div>
+            <div class="cor branca"
+            onclick="trocarCor('branca')"
+            title="Branca"></div>
+            <div class="cor marrom"
+            onclick="trocarCor('marrom')"
+            title="Marrom"></div>
+            <div class="cor preta"
+            onclick="trocarCor('preta')"
+            title="Preta"></div>
+        </div>
+        <h4>Quantidade:</h4>
+            <input
+                type="number"
+                id="quantidade"
+                min="1"
+                value="1"
+                style="
+                    width:80px;
+                    padding:10px;
+                    border-radius:10px;
+                    border:1px solid #ccc;
+                    margin-bottom:20px;
+                "
+            >
+        <button class="btn" onclick="adicionarCarrinho()">
+        Adicionar ao Carrinho
+        </button>
+    </div>
+</section>
+
+<section class="diferenciais">
+
+    <h3>Por que escolher nossos laços?</h3>
+
+    <div class="cards">
+
+        <div class="card">
+            <h4>Feito à mão</h4>
+            <p>Cada peça produzida com muito carinho.</p>
+        </div>
+
+        <div class="card">
+            <h4>Inspiração Católica</h4>
+            <p>Seu santo de Devoção junto de você.</p>
+        </div>
+
+        <div class="card">
+            <h4>Acabamento Premium</h4>
+            <p>Materiais de alta qualidade.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        Instagram:
+        @ateliepequenaflor
+    </p>
+
+    <p>
+        WhatsApp:
+        (34) 99999-9999
+    </p>
+
+</footer>
+
+<div id="overlay" class="overlay hidden" onclick="toggleCarrinho()"></div>
+
+<!-- Carrinho -->
+<div id="cartIcon" onclick="toggleCarrinho()" class="cart-icon">
+    🛒
+    <span id="qtdItensIcon" class="cart-badge">0</span>
+</div>
+
+<div id="carrinho" class="cart-panel">
+
+    <div class="cart__header">
+        <div>
+            <h3>Seu Pedido</h3>
+            <p class="cart__subtitle">Revise seus itens antes de finalizar</p>
+        </div>
+    </div>
+
+    <ul id="listaCarrinho" class="cart__items">
+        <!-- itens via JS -->
+    </ul>
+
+    <div class="cart__summary">
+
+        <div class="cart__row">
+            <span>Subtotal</span>
+            <strong id="subtotal">R$ 0,00</strong>
+        </div>
+
+        <div class="cart__row">
+              <span>Itens</span>
+            <strong id="qtdItens">0</strong>
+            <span>Total</span>
+            <strong id="totalCarrinho">R$ 0,00</strong>
+        </div>
+
+        <button class="cart__button" onclick="enviarWhatsapp()">
+            Finalizar pedido
+        </button>
+        <br>
+        <small class="cart__note">
+            Você será redirecionado para o WhatsApp
+        </small>
+
+    </div>
+
+</div>
+
+<script>
+let carrinho = [];
+let precoSelecionado = 79.90;
+let corSelecionada = "bege";
+let fotoSelecionada = "camisa-bege.png";
+let tamanhoSelecionado = "P";
+
+function toggleCarrinho(){
+
+    const carrinhoEl = document.getElementById("carrinho");
+    const overlay = document.getElementById("overlay");
+
+    const isOpen = carrinhoEl.classList.contains("open");
+
+    if(isOpen){
+        carrinhoEl.classList.remove("open");
+        overlay.classList.add("hidden");
+    } else {
+        carrinhoEl.classList.add("open");
+        overlay.classList.remove("hidden");
+    }
+}
+
+function adicionarCarrinho(){
+
+    const quantidade = parseInt(
+        document.getElementById("quantidade").value
+    );
+
+    if(!quantidade || quantidade <= 0){
+        alert("Informe uma quantidade válida!");
+        return;
+    }
+
+    carrinho.push({
+    nome: "Camiseta Nossa Senhora do Carmo",
+    cor: corSelecionada,
+    tamanho: tamanhoSelecionado,
+    quantidade: quantidade,
+    preco: precoSelecionado || 0,
+    foto: fotoSelecionada // 👈 ADD ISSO
+});
+
+document
+.getElementById("carrinho")
+.classList.add("open");
+
+document
+.getElementById("overlay")
+.classList.remove("hidden");
+
+    atualizarCarrinho();
+}
+
+function adicionarCamiseta() {
+
+    adicionarAoCarrinho({
+        tipo: "Camiseta",
+        nome: camisetaSelecionada.nome,
+        tamanho: tamanhoSelecionado,
+        cor: corSelecionada,
+        preco: camisetaSelecionada.preco,
+        imagem: camisetaSelecionada.img,
+        quantidade: 1
+    });
+
+}
+
+function atualizarCarrinho(){
+
+    const lista = document.getElementById("listaCarrinho");
+    const qtdItens = document.getElementById("qtdItens");
+    const qtdItensIcon = document.getElementById("qtdItensIcon");
+    const totalEl = document.getElementById("totalCarrinho");
+
+    lista.innerHTML = "";
+
+    let total = 0;
+    let quantidadeTotal = 0;
+
+    carrinho.forEach((item, index) => {
+
+        const preco = item.preco || 0;
+        const subtotal = item.quantidade * preco;
+
+        total += subtotal;
+        quantidadeTotal += item.quantidade;
+
+        lista.innerHTML += `
+    <li class="cart-card">
+
+        <img src="${item.foto}" class="cart-img">
+
+        <div class="cart-info">
+
+            <div class="cart-title">
+                ${item.nome}
+            </div>
+
+            <div class="cart-meta">
+                ${item.cor} • Tam ${item.tamanho}
+            </div>
+
+            <div class="cart-bottom">
+                <span>${item.quantidade}x</span>
+                <strong>R$ ${(item.preco * item.quantidade).toFixed(2)}</strong>
+            </div>
+
+        </div>
+
+        <button class="cart-remove" onclick="removerItem(${index})">
+            ✕
+        </button>
+
+    </li>
+`;
+    });
+
+    // atualiza depois de calcular
+    qtdItens.innerText = quantidadeTotal;
+    qtdItensIcon.innerText = quantidadeTotal;
+
+    totalEl.innerText = `R$ ${total.toFixed(2)}`;
+}
+
+function removerItem(index){
+    carrinho.splice(index, 1);
+    atualizarCarrinho();
+}
+
+function trocarCor(cor){
+
+    corSelecionada = cor;
+
+    const img = document.getElementById("imagemProduto");
+
+    if(cor === "bege"){
+        img.src = "camisa-bege.png";
+    }
+
+    if(cor === "branca"){
+        img.src = "camisa-branca.png";
+    }
+
+    if(cor === "marrom"){
+        img.src = "camisa-marrom.png";
+    }
+
+    if(cor === "preta"){
+        img.src = "camisa-preta.png";
+    }
+}
+
+function selecionarTamanho(elemento){
+
+    document.querySelectorAll('.tamanho').forEach(item=>{
+        item.classList.remove('ativo');
+    });
+
+    elemento.classList.add('ativo');
+
+    tamanhoSelecionado = elemento.innerText;
+}
+
+function enviarWhatsapp(){
+
+    if(carrinho.length === 0){
+
+        alert("Adicione itens ao carrinho.");
+
+        return;
+    }
+
+   let mensagem = `🛍️ *NOVO PEDIDO - CAMINHO DOS CÉUS*%0A%0A`;
+
+carrinho.forEach((item, index) => {
+
+```
+mensagem +=
+```
+
+`*Item ${index + 1}*%0A` +
+`👕 Produto: Camiseta Caminho dos Céus%0A` +
+`🎨 Cor: ${item.cor}%0A` +
+`📏 Tamanho: ${item.tamanho}%0A` +
+`🔢 Quantidade: ${item.quantidade}%0A%0A`;
+
+});
+
+mensagem +=
+`-----------------------------------%0A` +
+`Por favor, informar:%0A` +
+`📍 Cidade para entrega%0A` +
+`🚚 Forma de envio desejada%0A%0A` +
+`Aguardo a confirmação do pedido. 😊`;
+
+window.open(
+`https://wa.me/5534988940245?text=${mensagem}`,
+'_blank'
+);
+}
+</script>
+
+</body>
+</html>

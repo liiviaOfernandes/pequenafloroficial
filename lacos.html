@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ateliê Pequena Flor</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --rosa-claro:#f7eef2;
+    --rosa:#e8cbd6;
+    --vinho:#a13a63;
+    --dourado:#c6a06a;
+    --texto:#555;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--rosa-claro);
+    color:var(--texto);
+}
+
+header{
+    text-align:center;
+    padding:40px 20px;
+}
+
+.menu-topo{
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    box-shadow:0 2px 15px rgba(0,0,0,.05);
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.menu-topo ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+.menu-topo a{
+    text-decoration:none;
+    color:var(--vinho);
+    font-weight:600;
+}
+
+.logo{
+    width:140px;
+    margin:0;
+}
+
+h1{
+    font-family:'Playfair Display',serif;
+    color:var(--vinho);
+    font-size:3rem;
+}
+
+.subtitulo{
+    margin-top:10px;
+    font-size:1rem;
+    letter-spacing:2px;
+}
+
+.hero{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:60px;
+    padding:50px 20px;
+    flex-wrap:wrap;
+}
+
+.produto{
+    flex:1;
+    min-width:300px;
+    text-align:center;
+}
+
+.produto img{
+    width:100%;
+    max-width:450px;
+    transition:.4s;
+    filter:drop-shadow(0 15px 25px rgba(0,0,0,.12));
+}
+
+.produto img:hover{
+    transform:scale(1.03);
+}
+
+.info{
+    flex:1;
+    min-width:300px;
+}
+
+.info h2{
+    font-size:2.5rem;
+    color:var(--vinho);
+    margin-bottom:15px;
+}
+
+.preco{
+    font-size:2rem;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.cores{
+    display:flex;
+    gap:15px;
+    margin:25px 0;
+}
+
+.cor{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    cursor:pointer;
+    border:3px solid white;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.bege{
+    background:#c9b08a;
+}
+
+.branca{
+    background:#ffffff;
+    border:2px solid #ddd;
+}
+
+.marrom{
+    background:#6b4a2b;
+}
+
+.preta{
+    background:#222;
+}
+
+.tam{
+    display:flex;
+    gap:12px;
+    margin:15px 0 30px;
+    flex-wrap:wrap;
+}
+
+.tamanho{
+    width:55px;
+    height:55px;
+    border-radius:12px;
+    background:white;
+    border:2px solid var(--rosa);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.tamanho:hover{
+    border-color:var(--vinho);
+    transform:translateY(-2px);
+}
+
+.tamanho.ativo{
+    background:var(--vinho);
+    color:white;
+    border-color:var(--vinho);
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:var(--vinho);
+    color:white;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#8a2f53;
+    transform:translateY(-2px);
+}
+
+.section-title{
+    text-align:center;
+    margin:40px 0 25px;
+}
+
+.section-title h1{
+    font-size:2.3rem;
+    color:var(--vinho);
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:#777;
+    font-size:1rem;
+}
+
+.shop{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width: 180px;
+   
+    object-fit:cover;
+}
+
+.card div{
+    padding:15px;
+}
+
+.tamanhos{
+    display:none;
+    flex-direction:column;
+    gap:8px;
+    padding:15px;
+}
+
+.tamanho-btn{
+    background:#f5f5f5;
+    border:1px solid #ddd;
+    padding:12px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.tamanho-btn:hover{
+    background:#f0dce6;
+}
+
+.tamanho-btn.selected{
+    background:var(--vinho);
+    color:white;
+    border-color:var(--vinho);
+}
+
+.medalhas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.medalha{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    cursor:pointer;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.medalha:hover{
+    transform:translateY(-4px);
+}
+
+.medalha img{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+}
+
+.medalha span{
+    display:block;
+    padding:12px;
+    text-align:center;
+    font-weight:500;
+}
+
+.medalha.selected{
+    border:3px solid var(--vinho);
+}
+
+.colors{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.color-option{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    cursor:pointer;
+    border:3px solid white;
+    box-shadow:0 0 10px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.color-option:hover{
+    transform:scale(1.08);
+}
+
+.color-option.selected{
+    border:4px solid var(--vinho);
+    transform:scale(1.15);
+}
+
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:35px 0;
+}
+
+.btn-primary,
+.btn-whatsapp{
+    border:none;
+    padding:16px 30px;
+    border-radius:50px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--vinho);
+    color:white;
+}
+
+.btn-whatsapp{
+    background:#25D366;
+    color:white;
+}
+
+.btn-primary:hover,
+.btn-whatsapp:hover{
+    transform:translateY(-3px);
+}
+
+.summary{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    margin-bottom:50px;
+}
+
+/* Cards Diferenciais */
+.diferenciais{
+    padding:80px 20px;
+}
+
+.diferenciais h3{
+    text-align:center;
+    color:var(--vinho);
+    font-size:2rem;
+    margin-bottom:40px;
+}
+
+.cards{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.card span{
+    font-size:2rem;
+}
+
+.card h4{
+    margin:15px 0;
+    color:var(--vinho);
+}
+
+/* Sobre */
+.sobre{
+    max-width:900px;
+    margin:auto;
+    padding:80px 20px;
+    text-align:center;
+}
+
+.sobre h3{
+    color:var(--vinho);
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:30px;
+    background:white;
+    margin-top:40px;
+}
+
+footer a{
+    color:var(--vinho);
+    text-decoration:none;
+}
+
+/*carrinho*/
+.cart-icon{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #ff9ad7d7;
+    color: rgb(112, 80, 80);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.cart-badge{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #5e0721;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-panel{
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    width: 360px;
+    max-height: 80vh;
+    background: #1d1b1b;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+    z-index: 998;
+    transform: translateY(20px);
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.hidden{
+    display: none;
+}
+
+.cart-card{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin: 10px 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.cart-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #eee;
+}
+
+.cart-info{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-title{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.cart-meta{
+    font-size: 12px;
+    color: #777;
+}
+
+.cart-bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.cart-remove{
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #999;
+}
+
+.cart-remove:hover{
+    color: red;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
+    z-index: 997;
+}
+
+/* CARRINHO LATERAL (ESTILO APP) */
+.cart-panel{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: 100vh;
+    background: #f9dced;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+    z-index: 998;
+
+    padding:30px;
+    border-radius:20px;
+    text-align:left;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    
+
+    display: flex;
+    flex-direction: column;
+
+    transform: translateX(100%);
+    transition: transform 0.35s ease-in-out;
+}
+.cart-panel h3{
+    color:var(--vinho);
+    margin-bottom:20px;
+    font-size:2rem;
+
+}
+
+.cart-panel button{
+    display:inline-block;
+    padding:15px 35px;
+    background:var(--vinho);
+    color:white;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.cart-panel button:hover{
+    background:#8a2f53;
+    transform:translateY(-2px);
+}
+
+/* quando abre */
+.cart-panel.open{
+    transform: translateX(0);
+    margin: 20px;
+}
+
+/* estado hidden do overlay */
+.hidden{
+    display: none;
+}
+
+/* Responsividade */
+@media(max-width:768px){
+
+    h1{
+        font-size:2.2rem;
+    }
+
+    .info h2{
+        font-size:2rem;
+    }
+
+    .hero{
+        padding-top:20px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+<!--Menu-->
+<header>
+    <nav class="menu-topo">
+        <a href="index.html" class="logo-link">
+            <img src="logo.png" class="logo" alt="Pequena Flor">
+        </a>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="lacos.html">Laços</a></li>
+            <li><a href="camisetas.html">Camisetas</a></li>
+            <button href="https://wa.me/5534988940245" class="btn">Fazer Pedido</button>
+        </ul>
+    </nav>
+</header>
+
+<!--Laço Santa Teresinha-->
+
+<!--Camiseta1-->
+<section class="hero">
+    <div class="produto">
+    <img id="imagemProduto"
+    src="camisa-bege.png"
+    alt="Camiseta">
+</div>
+
+    <div class="info">
+        <h2>Camiseta Nossa Senhora do Carmo</h2>
+        <p>Camiseta católica confeccionada com tecido confortável e estampa exclusiva.
+Disponível em quatro cores.</p>
+        <div class="preco">
+            R$ 79,90
+        </div>
+        <h4>Tamanho:</h4>
+        <div class="tam">
+            <div class="tamanho ativo" onclick="selecionarTamanho(this)">P</div>
+            <div class="tamanho" onclick="selecionarTamanho(this)">M</div>
+            <div class="tamanho" onclick="selecionarTamanho(this)">G</div>
+            <div class="tamanho" onclick="selecionarTamanho(this)">GG</div>
+        </div>
+        <h4>Escolha a cor:</h4>
+        <div class="cores">
+            <div class="cor bege"
+            onclick="trocarCor('bege')"
+            title="Bege"></div>
+            <div class="cor branca"
+            onclick="trocarCor('branca')"
+            title="Branca"></div>
+            <div class="cor marrom"
+            onclick="trocarCor('marrom')"
+            title="Marrom"></div>
+            <div class="cor preta"
+            onclick="trocarCor('preta')"
+            title="Preta"></div>
+        </div>
+        <h4>Quantidade:</h4>
+            <input
+                type="number"
+                id="quantidade"
+                min="1"
+                value="1"
+                style="
+                    width:80px;
+                    padding:10px;
+                    border-radius:10px;
+                    border:1px solid #ccc;
+                    margin-bottom:20px;
+                "
+            >
+        <button class="btn" onclick="adicionarCarrinho()">
+        Adicionar ao Carrinho
+        </button>
+    </div>
+</section>
+
+
+
+<section class="section-title">
+    <h1>Modelos</h1>
+    <p>Selecione o modelo do seu laço</p>
+</section>
+
+<div id="galeria" class="gallery"></div>
+
+<section class="section-title">
+    <h1>Medalha</h1>
+    <p>Escolha a medalha para personalizar seu laço</p>
+</section>
+
+<div class="medalhas">
+    <!-- medalhas -->
+</div>
+
+<section class="section-title">
+    <h1>Cor</h1>
+    <p>Selecione a cor desejada</p>
+</section>
+
+<div class="colors">
+    <!-- cores -->
+</div>
+
+<div class="cart-icon" onclick="abrirCarrinho()">
+    🛒
+    <span id="cart-badge" class="cart-badge">0</span>
+</div>
+
+<div id="cart-panel" class="cart-panel">
+    <h2>Meu Pedido</h2>
+
+    <div id="cart-items"></div>
+
+    <div id="cart-total"></div>
+
+    <button onclick="enviarPedido()">
+        Finalizar Pedido
+    </button>
+</div>
+
+<footer>
+    <p>@ateliepequenaflor • WhatsApp (34) 99999-9999</p>
+</footer>
+
+<script>
+let selecionado={},carrinho=[];
+const galeria=document.getElementById("galeria");
+const resumo=document.getElementById("resumo");
+const produtos={
+"Santa Teresinha":{img:"L_st.jpg",tamanhos:[{t:"PP - 6x9cm",p:23},{t:"P - 9x15cm",p:24},{t:"M - 11x17cm",p:25},{t:"G - 12x19cm",p:28}]},
+"Nsª do Carmo":{img:"L_carmo.jpg",tamanhos:[{t:"PP - 4x6cm",p:20},{t:"P - 4,5x7cm",p:23},{t:"M - 5,5x9cm",p:24},{t:"G - 6,5x11cm",p:25}]},
+"Nsª das Graças":{img:"L_gracas.jpg",tamanhos:[{t:"PP - 3,5x6,5cm",p:23},{t:"P - 4,5x7cm",p:24},{t:"M - 5x9cm",p:25},{t:"G - 5x11cm",p:26}]},
+};
+
+
+
+for(let m in produtos){
+  galeria.innerHTML+=`
+  <div class="card" onclick="abrirTamanhos(this,'${m}')">
+    <img src="${produtos[m].img}">
+    <div><b>${m}</b></div>
+    <div class="tamanhos"></div>
+  </div>`;
+}
+
+function abrirTamanhos(card,modelo){
+  document.querySelectorAll(".tamanhos").forEach(t=>t.style.display="none");
+  const area=card.querySelector(".tamanhos");
+  area.innerHTML="";
+  produtos[modelo].tamanhos.forEach(t=>{
+    area.innerHTML+=`<div class="tamanho-btn" onclick="selecionarTamanho(event,'${modelo}','${t.t}',${t.p})">${t.t} — R$ ${t.p}</div>`;
+  });
+  area.style.display="flex";
+}
+
+function selecionarTamanho(e,modelo,tamanho,preco){
+  e.stopPropagation();
+  document.querySelectorAll(".tamanho-btn").forEach(b=>b.classList.remove("selected"));
+  e.target.classList.add("selected");
+  selecionado.modelo=modelo;
+  selecionado.tamanho=tamanho;
+  selecionado.preco=preco;
+}
+
+document.querySelectorAll(".medalha").forEach(m=>m.onclick=()=>{document.querySelectorAll(".medalha").forEach(x=>x.classList.remove("selected"));m.classList.add("selected");selecionado.medalha=m.dataset.medalha;});
+document.querySelectorAll(".color-option").forEach(c=>c.onclick=()=>{document.querySelectorAll(".color-option").forEach(x=>x.classList.remove("selected"));c.classList.add("selected");selecionado.cor=c.dataset.color;});
+
+function adicionarItem() {
+
+    if(
+        !selecionado.modelo ||
+        !selecionado.tamanho ||
+        !selecionado.medalha ||
+        !selecionado.cor
+    ){
+        alert("Complete todas as opções.");
+        return;
+    }
+
+    adicionarAoCarrinho({
+        tipo: "Laço",
+        nome: selecionado.modelo,
+        tamanho: selecionado.tamanho,
+        medalha: selecionado.medalha,
+        cor: selecionado.cor,
+        preco: selecionado.preco,
+        imagem: produtos[selecionado.modelo].img,
+        quantidade: 1
+    });
+}
+
+function removerItem(i){
+    carrinho.splice(i,1);
+    atualizarResumo();
+}
+
+function atualizarResumo(){
+if(carrinho.length==0){
+  resumo.innerHTML="<b>Pedido:</b><br>Nenhum item.";
+  return;
+}
+
+let html="",total=0;
+
+carrinho.forEach((i,n)=>{
+  total+=i.preco;
+
+  html+=`
+  <div class="item">
+    <img src="${i.img}">
+    <div>
+      ${n+1}. <b>${i.modelo}</b><br>
+      Tam: ${i.tamanho}<br>
+      Medalha: ${i.medalha}<br>
+      Cor: ${i.cor}<br>
+      R$ ${i.preco}
+    </div>
+    <button class="remove" onclick="removerItem(${n})">x</button>
+  </div>`;
+});
+
+resumo.innerHTML="<b>Pedido:</b><br>"+html+`<div class="total">Total: R$ ${total}</div>`;
+}
+
+function enviarPedido(){
+
+    if(carrinho.length === 0){
+        alert("Adicione pelo menos um item.");
+        return;
+    }
+
+    let total = 0;
+
+    let mensagem =
+`🌸 *PEDIDO - ATELIÊ PEQUENA FLOR* 🌸
+
+Olá! Gostaria de fazer o seguinte pedido:
+
+`;
+
+    carrinho.forEach((item,index)=>{
+
+        total += item.preco;
+
+        mensagem +=
+`${index + 1}. *${item.modelo}*
+📏 Tamanho: ${item.tamanho}
+🏅 Medalha: ${item.medalha}
+🎀 Cor: ${item.cor}
+💰 Valor: R$ ${item.preco}
+
+`;
+
+    });
+
+    mensagem +=
+`━━━━━━━━━━━━━━
+💵 *TOTAL: R$ ${total}*
+
+Aguardo confirmação. 😊`;
+
+    window.open(
+        `https://wa.me/5534988940245?text=${encodeURIComponent(mensagem)}`,
+        "_blank"
+    );
+}
+
+</script>
+
+</body>
+</html>
