@@ -21,6 +21,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
@@ -32,8 +33,8 @@ body{
 /* MENU */
 header{
     background:white;
+    padding:15px 8%;
     box-shadow:0 2px 15px rgba(0,0,0,.05);
-    position:sticky;
     top:0;
     z-index:999;
 }
@@ -46,6 +47,25 @@ header{
     align-items:center;
     padding:15px 20px;
 }
+
+.topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.menu{
+    display:flex;
+    gap:20px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
+
+
 
 .logo{
     width:130px;
@@ -371,12 +391,87 @@ header{
     display: none;
 }
 
+/* FOOTER */
+.footer{
+    background: linear-gradient(135deg, #fff, #f8f3ef);
+    border-top: 1px solid #e9dfd6;
+    margin-top: 60px;
+    padding: 0;
+    color: #555;
+}
 
-footer{
-    text-align:center;
-    padding:30px;
-    margin-top:40px;
-    background:#fafafa;
+.footer-content{
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-brand h3{
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    color: #7d5a50;
+}
+
+.footer-brand p{
+    max-width: 350px;
+    line-height: 1.6;
+    color: #777;
+}
+
+.footer-contact{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-contact a{
+    color: #7d5a50;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.footer-contact a:hover{
+    color: #b08968;
+    transform: translateX(3px);
+}
+
+.footer-bottom{
+    border-top: 1px solid #e9dfd6;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.credits{
+    margin-top: 8px;
+}
+
+.credits a{
+    color: #7d5a50;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.credits a:hover{
+    color: #b08968;
+}
+
+@media (max-width: 768px){
+    .footer-content{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-brand p{
+        max-width: 100%;
+    }
 }
 
 </style>
@@ -385,15 +480,16 @@ footer{
 
 <body>
 
+    <!-- MENU -->
 <header>
-    <div class="nav">
-        <img src="logo.png" class="logo">
+    <div class="topo">
+    <img src="logo.png" class="logo">
 
-        <ul>
-            <li><a href="#">Início</a></li>
-            <li><a href="lacos.html">Laços</a></li>
-            <li><a href="camisetas.html">Camisetas</a></li>
-        </ul>
+        <nav class="menu">
+        <a href="index.html">Início</a>
+        <a href="lacos.html">Laços</a>
+        <a href="camisetas.html">Camisetas</a>
+        </nav>
     </div>
 </header>
 
@@ -455,8 +551,38 @@ footer{
     </button>
 </div>
 
-<footer>
-    <p>@ateliepequenaflor • WhatsApp (34) 99999-9999</p>
+
+<!--footer-->
+<footer class="footer">
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h3>Ateliê Pequena Flor</h3>
+            <p>Laços, acessórios e produtos personalizados feitos com carinho.</p>
+        </div>
+
+        <div class="footer-contact">
+            <a href="https://www.instagram.com/pequenaflor.catolica/" target="_blank">
+                @pequenaflor.catolica
+            </a>
+
+            <a href="https://wa.me/5534988940245" target="_blank">
+                WhatsApp (34) 98894-0245
+            </a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Ateliê Pequena Flor. Todos os direitos reservados.</p>
+
+        <p class="credits">
+            Desenvolvido por
+            <a href="https://instagram.com/liviafernandes.jpg" target="_blank">
+                @liviafernandes.jpg
+            </a>
+        </p>
+    </div>
 </footer>
 
 </body>

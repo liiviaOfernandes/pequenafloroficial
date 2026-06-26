@@ -34,38 +34,58 @@ body{
     color:var(--texto);
 }
 
-header{
-    text-align:center;
-    padding:40px 20px;
-}
 
-.menu-topo{
+/* MENU */
+header{
     background:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 40px;
-    box-shadow:0 2px 15px rgba(0,0,0,.05);
-    position:sticky;
+    padding:15px 8%;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
     top:0;
     z-index:999;
 }
 
-.menu-topo ul{
+.nav{
+    max-width:1200px;
+    margin:auto;
     display:flex;
-    list-style:none;
-    gap:30px;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
 }
 
-.menu-topo a{
-    text-decoration:none;
-    color:var(--vinho);
-    font-weight:600;
+
+.topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
+
 
 .logo{
-    width:140px;
-    margin:0;
+    width:130px;
+}
+
+
+.menu{
+    display:flex;
+    gap:20px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
+
+/* HERO */
+.hero{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:50px;
+    padding:60px 20px;
+    flex-wrap:wrap;
 }
 
 h1{
@@ -255,19 +275,6 @@ h1{
     color:var(--vinho);
     margin-bottom:20px;
     font-size:2rem;
-}
-
-/* Footer */
-footer{
-    text-align:center;
-    padding:30px;
-    background:white;
-    margin-top:40px;
-}
-
-footer a{
-    color:var(--vinho);
-    text-decoration:none;
 }
 
 /*carrinho*/
@@ -462,28 +469,105 @@ footer a{
     }
 }
 
+/* FOOTER */
+.footer{
+    background: linear-gradient(135deg, #fff, #f8f3ef);
+    border-top: 1px solid #e9dfd6;
+    margin-top: 60px;
+    padding: 0;
+    color: #555;
+}
+
+.footer-content{
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-brand h3{
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    color: #7d5a50;
+}
+
+.footer-brand p{
+    max-width: 350px;
+    line-height: 1.6;
+    color: #777;
+}
+
+.footer-contact{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-contact a{
+    color: #7d5a50;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.footer-contact a:hover{
+    color: #b08968;
+    transform: translateX(3px);
+}
+
+.footer-bottom{
+    border-top: 1px solid #e9dfd6;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.credits{
+    margin-top: 8px;
+}
+
+.credits a{
+    color: #7d5a50;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.credits a:hover{
+    color: #b08968;
+}
+
+@media (max-width: 768px){
+    .footer-content{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-brand p{
+        max-width: 100%;
+    }
+}
+
 </style>
 
 </head>
 <body>
 
+    <!-- MENU -->
 <header>
+    <div class="topo">
+    <img src="logo.png" class="logo">
 
-    <nav class="menu-topo">
-
-        <a href="index.html" class="logo-link">
-            <img src="logo.png" class="logo" alt="Pequena Flor">
-        </a>
-
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="lacos.html">Laços</a></li>
-            <li><a href="camisetas.html">Camisetas</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-        </ul>
-
-    </nav>
-
+        <nav class="menu">
+        <a href="index.html">Início</a>
+        <a href="lacos.html">Laços</a>
+        <a href="camisetas.html">Camisetas</a>
+        </nav>
+    </div>
 </header>
 
 <!--Camiseta1-->
@@ -567,21 +651,6 @@ Disponível em quatro cores.</p>
     </div>
 
 </section>
-
-
-<footer>
-
-    <p>
-        Instagram:
-        @ateliepequenaflor
-    </p>
-
-    <p>
-        WhatsApp:
-        (34) 99999-9999
-    </p>
-
-</footer>
 
 <div id="overlay" class="overlay hidden" onclick="toggleCarrinho()"></div>
 
@@ -832,6 +901,39 @@ window.open(
 );
 }
 </script>
+
+<!--footer-->
+<footer class="footer">
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h3>Ateliê Pequena Flor</h3>
+            <p>Laços, acessórios e produtos personalizados feitos com carinho.</p>
+        </div>
+
+        <div class="footer-contact">
+            <a href="https://www.instagram.com/pequenaflor.catolica/" target="_blank">
+                @pequenaflor.catolica
+            </a>
+
+            <a href="https://wa.me/5534988940245" target="_blank">
+                WhatsApp (34) 98894-0245
+            </a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Ateliê Pequena Flor. Todos os direitos reservados.</p>
+
+        <p class="credits">
+            Desenvolvido por
+            <a href="https://instagram.com/liviafernandes.jpg" target="_blank">
+                @liviafernandes.jpg
+            </a>
+        </p>
+    </div>
+</footer>
 
 </body>
 </html>
