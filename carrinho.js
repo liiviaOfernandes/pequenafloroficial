@@ -92,7 +92,7 @@ function enviarPedido(){
     let total = 0;
 
     let mensagem =
-`🌸 *ATELIÊ PEQUENA FLOR* 🌸
+`*ATELIÊ PEQUENA FLOR*
 
 Olá! Gostaria de fazer o seguinte pedido:
 
@@ -104,21 +104,21 @@ Olá! Gostaria de fazer o seguinte pedido:
 
         mensagem +=
 `${index+1}. *${item.tipo}*
-📌 ${item.nome}
-📏 Tamanho: ${item.tamanho}
-🎨 Cor: ${item.cor}
-💰 R$ ${item.preco}
+${item.nome}
+Tamanho: ${item.tamanho}
+Cor: ${item.cor}
+R$ ${item.preco}
 
 `;
 
         if(item.medalha){
-            mensagem += `🏅 Medalha: ${item.medalha}\n\n`;
+            mensagem += `Medalha: ${item.medalha}\n\n`;
         }
     });
 
     mensagem +=
 `━━━━━━━━━━━━━━
-💵 *TOTAL: R$ ${total.toFixed(2)}*`;
+*TOTAL: R$ ${total.toFixed(2)}*`;
 
     window.open(
         `https://wa.me/5534988940245?text=${encodeURIComponent(mensagem)}`

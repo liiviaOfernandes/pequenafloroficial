@@ -276,181 +276,217 @@ h1{
     margin-bottom:20px;
     font-size:2rem;
 }
+/* ==========================
+   CARRINHO
+========================== */
 
-/*carrinho*/
 .cart-icon{
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background: #ff9ad7d7;
-    color: rgb(112, 80, 80);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    z-index: 999;
-}
-
-.cart-badge{
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: #5e0721;
-    color: white;
-    font-size: 12px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cart-panel{
-    position: fixed;
-    right: 20px;
-    bottom: 90px;
-    width: 360px;
-    max-height: 80vh;
-    background: #1d1b1b;
-    border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    overflow: hidden;
-    z-index: 998;
-    transform: translateY(20px);
-    opacity: 1;
-    transition: 0.3s;
-}
-
-.hidden{
-    display: none;
-}
-
-.cart-card{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px;
-    margin: 10px 0;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.cart-img{
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    object-fit: cover;
-    background: #eee;
-}
-
-.cart-info{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.cart-title{
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.cart-meta{
-    font-size: 12px;
-    color: #777;
-}
-
-.cart-bottom{
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-}
-
-.cart-remove{
-    background: transparent;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: #999;
-}
-
-.cart-remove:hover{
-    color: red;
-}
-
-.overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(2px);
-    z-index: 997;
-}
-
-/* CARRINHO LATERAL (ESTILO APP) */
-.cart-panel{
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 380px;
-    height: 100vh;
-    background: #f9dced;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.2);
-    z-index: 998;
-
-    padding:30px;
-    border-radius:20px;
-    text-align:left;
-    box-shadow:0 10px 25px rgba(0,0,0,.05);
-    
-
-    display: flex;
-    flex-direction: column;
-
-    transform: translateX(100%);
-    transition: transform 0.35s ease-in-out;
-}
-.cart-panel h3{
-    color:var(--vinho);
-    margin-bottom:20px;
-    font-size:2rem;
-
-}
-
-.cart-panel button{
-    display:inline-block;
-    padding:15px 35px;
-    background:var(--vinho);
-    color:white;
-    text-decoration:none;
-    border-radius:40px;
-    font-weight:600;
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#c76a92,#a13a63);
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:26px;
+    cursor:pointer;
+    z-index:1200;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
     transition:.3s;
 }
 
-.cart-panel button:hover{
-    background:#8a2f53;
-    transform:translateY(-2px);
+.cart-icon:hover{
+    transform:scale(1.08);
 }
 
-/* quando abre */
-.cart-panel.open{
-    transform: translateX(0);
-    margin: 20px;
+.cart-badge{
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    background:#fff;
+    color:#a13a63;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:700;
 }
 
-/* estado hidden do overlay */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(4px);
+    z-index:1090;
+}
+
 .hidden{
-    display: none;
+    display:none;
+}
+
+.cart-panel{
+    position:fixed;
+    top:0;
+    right:0;
+    width:430px;
+    max-width:100%;
+    height:100vh;
+    background:white;
+    z-index:1100;
+
+    transform:translateX(100%);
+    transition:.35s ease;
+
+    display:flex;
+    flex-direction:column;
+
+    box-shadow:
+    -20px 0 50px rgba(0,0,0,.15);
+}
+
+.cart-panel.open{
+    transform:translateX(0);
+}
+
+.cart-header{
+    padding:24px;
+    border-bottom:1px solid #eee;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    background:white;
+}
+
+.cart-header h3{
+    color:var(--vinho);
+    font-size:1.4rem;
+    margin-bottom:4px;
+}
+
+.cart-subtitle{
+    font-size:.85rem;
+    color:#888;
+}
+
+.close-cart{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:12px;
+    background:#f5f5f5;
+    cursor:pointer;
+    font-size:20px;
+    transition:.3s;
+}
+
+.close-cart:hover{
+    background:#a13a63;
+    color:white;
+}
+.close-cart:hover{
+    color:#a13a63;
+}
+
+.cart__items{
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+}
+
+.cart-card{
+    display:flex;
+    gap:15px;
+
+    background:white;
+
+    border:1px solid #eee;
+
+    border-radius:18px;
+
+    padding:15px;
+
+    margin-bottom:15px;
+}
+
+.cart-img{
+    width:80px;
+    height:80px;
+
+    border-radius:15px;
+
+    object-fit:cover;
+
+    background:#f5f5f5;
+}
+
+.cart-title{
+    color:var(--vinho);
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.cart-meta{
+    color:#777;
+    font-size:.85rem;
+}
+
+.cart-bottom{
+    margin-top:8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.cart-info{
+    flex:1;
+}
+
+.cart-remove{
+    border:none;
+    background:none;
+    color:#999;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.cart-remove:hover{
+    color:red;
+}
+
+.cart__summary{
+    border-top:1px solid #eee;
+    padding:20px;
+    background:#fff;
+}
+
+.cart__row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.cart__button{
+    width:100%;
+    border:none;
+    padding:16px;
+    border-radius:12px;
+    background:#a13a63;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.cart__button:hover{
+    background:#8b2d54;
 }
 
 /* Responsividade */
@@ -467,6 +503,10 @@ h1{
     .hero{
         padding-top:20px;
     }
+}
+
+.card button:hover{
+  opacity:.9;
 }
 
 /* FOOTER */
@@ -652,45 +692,65 @@ Disponível em quatro cores.</p>
 
 </section>
 
-<div id="overlay" class="overlay hidden" onclick="toggleCarrinho()"></div>
+<!-- Overlay -->
+<div id="overlay" class="overlay hidden"></div>
 
-<!-- Carrinho -->
-<div id="cartIcon" onclick="toggleCarrinho()" class="cart-icon">
+<!-- Botão Carrinho -->
+<div id="cartIcon" class="cart-icon" onclick="toggleCarrinho()">
     🛒
-    <span id="qtdItensIcon" class="cart-badge">0</span>
+    <span id="cart-badge" class="cart-badge">0</span>
 </div>
 
+<!-- Painel Carrinho -->
 <div id="carrinho" class="cart-panel">
 
-    <div class="cart__header">
+    <div class="cart-header">
+
         <div>
             <h3>Seu Pedido</h3>
-            <p class="cart__subtitle">Revise seus itens antes de finalizar</p>
+            <p class="cart-subtitle">
+                Revise seus itens antes de finalizar
+            </p>
         </div>
+
+        <button
+            class="close-cart"
+            onclick="toggleCarrinho()">
+            ✕
+        </button>
+
     </div>
 
-    <ul id="listaCarrinho" class="cart__items">
-        <!-- itens via JS -->
-    </ul>
+    <div id="cart-items" class="cart__items">
+
+        <div class="cart-empty">
+            Seu carrinho está vazio.
+        </div>
+
+    </div>
 
     <div class="cart__summary">
 
         <div class="cart__row">
-            <span>Subtotal</span>
-            <strong id="subtotal">R$ 0,00</strong>
+            <span>Itens</span>
+            <strong id="cart-qtd">0</strong>
         </div>
 
         <div class="cart__row">
-              <span>Itens</span>
-            <strong id="qtdItens">0</strong>
             <span>Total</span>
-            <strong id="totalCarrinho">R$ 0,00</strong>
+            <strong id="cart-total">
+                R$ 0,00
+            </strong>
         </div>
 
-        <button class="cart__button" onclick="enviarWhatsapp()">
-            Finalizar pedido
+        <button
+            class="cart__button"
+            onclick="enviarPedido()">
+
+            Finalizar Pedido
+
         </button>
-        <br>
+
         <small class="cart__note">
             Você será redirecionado para o WhatsApp
         </small>
@@ -699,8 +759,9 @@ Disponível em quatro cores.</p>
 
 </div>
 
+<script src="carrinho.js"></script>
 <script>
-let carrinho = [];
+
 let precoSelecionado = 79.90;
 let corSelecionada = "bege";
 let fotoSelecionada = "camisa-bege.png";
@@ -708,18 +769,52 @@ let tamanhoSelecionado = "P";
 
 function toggleCarrinho(){
 
-    const carrinhoEl = document.getElementById("carrinho");
-    const overlay = document.getElementById("overlay");
+    document
+        .getElementById("carrinho")
+        .classList.toggle("open");
 
-    const isOpen = carrinhoEl.classList.contains("open");
+    document
+        .getElementById("overlay")
+        .classList.toggle("hidden");
 
-    if(isOpen){
-        carrinhoEl.classList.remove("open");
-        overlay.classList.add("hidden");
-    } else {
-        carrinhoEl.classList.add("open");
-        overlay.classList.remove("hidden");
+    if(typeof renderizarCarrinho === "function"){
+        renderizarCarrinho();
     }
+}
+
+function trocarCor(cor){
+
+    corSelecionada = cor;
+
+    const img =
+        document.getElementById("imagemProduto");
+
+    const imagens = {
+
+        bege:"camisa-bege.png",
+        branca:"camisa-branca.png",
+        marrom:"camisa-marrom.png",
+        preta:"camisa-preta.png"
+
+    };
+
+    img.src = imagens[cor];
+
+    fotoSelecionada = imagens[cor];
+}
+
+function selecionarTamanho(elemento){
+
+    document
+        .querySelectorAll(".tamanho")
+        .forEach(item =>
+            item.classList.remove("ativo")
+        );
+
+    elemento.classList.add("ativo");
+
+    tamanhoSelecionado =
+        elemento.innerText;
 }
 
 function adicionarCarrinho(){
@@ -728,178 +823,43 @@ function adicionarCarrinho(){
         document.getElementById("quantidade").value
     );
 
-    if(!quantidade || quantidade <= 0){
-        alert("Informe uma quantidade válida!");
+    if(!quantidade || quantidade < 1){
+
+        alert("Informe uma quantidade válida.");
+
         return;
     }
-
-    carrinho.push({
-    nome: "Camiseta Nossa Senhora do Carmo",
-    cor: corSelecionada,
-    tamanho: tamanhoSelecionado,
-    quantidade: quantidade,
-    preco: precoSelecionado || 0,
-    foto: fotoSelecionada // 👈 ADD ISSO
-});
-
-document
-.getElementById("carrinho")
-.classList.add("open");
-
-document
-.getElementById("overlay")
-.classList.remove("hidden");
-
-    atualizarCarrinho();
-}
-
-function adicionarCamiseta() {
 
     adicionarAoCarrinho({
-        tipo: "Camiseta",
-        nome: camisetaSelecionada.nome,
-        tamanho: tamanhoSelecionado,
-        cor: corSelecionada,
-        preco: camisetaSelecionada.preco,
-        imagem: camisetaSelecionada.img,
-        quantidade: 1
+
+        tipo:"Camiseta",
+
+        nome:"Camiseta Nossa Senhora do Carmo",
+
+        cor:corSelecionada,
+
+        tamanho:tamanhoSelecionado,
+
+        quantidade:quantidade,
+
+        preco:precoSelecionado,
+
+        imagem:fotoSelecionada
+
     });
 
+    toggleCarrinho();
 }
 
-function atualizarCarrinho(){
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
 
-    const lista = document.getElementById("listaCarrinho");
-    const qtdItens = document.getElementById("qtdItens");
-    const qtdItensIcon = document.getElementById("qtdItensIcon");
-    const totalEl = document.getElementById("totalCarrinho");
-
-    lista.innerHTML = "";
-
-    let total = 0;
-    let quantidadeTotal = 0;
-
-    carrinho.forEach((item, index) => {
-
-        const preco = item.preco || 0;
-        const subtotal = item.quantidade * preco;
-
-        total += subtotal;
-        quantidadeTotal += item.quantidade;
-
-        lista.innerHTML += `
-    <li class="cart-card">
-
-        <img src="${item.foto}" class="cart-img">
-
-        <div class="cart-info">
-
-            <div class="cart-title">
-                ${item.nome}
-            </div>
-
-            <div class="cart-meta">
-                ${item.cor} • Tam ${item.tamanho}
-            </div>
-
-            <div class="cart-bottom">
-                <span>${item.quantidade}x</span>
-                <strong>R$ ${(item.preco * item.quantidade).toFixed(2)}</strong>
-            </div>
-
-        </div>
-
-        <button class="cart-remove" onclick="removerItem(${index})">
-            ✕
-        </button>
-
-    </li>
-`;
-    });
-
-    // atualiza depois de calcular
-    qtdItens.innerText = quantidadeTotal;
-    qtdItensIcon.innerText = quantidadeTotal;
-
-    totalEl.innerText = `R$ ${total.toFixed(2)}`;
-}
-
-function removerItem(index){
-    carrinho.splice(index, 1);
-    atualizarCarrinho();
-}
-
-function trocarCor(cor){
-
-    corSelecionada = cor;
-
-    const img = document.getElementById("imagemProduto");
-
-    if(cor === "bege"){
-        img.src = "camisa-bege.png";
+    if(typeof atualizarContadorCarrinho === "function"){
+        atualizarContadorCarrinho();
     }
-
-    if(cor === "branca"){
-        img.src = "camisa-branca.png";
-    }
-
-    if(cor === "marrom"){
-        img.src = "camisa-marrom.png";
-    }
-
-    if(cor === "preta"){
-        img.src = "camisa-preta.png";
-    }
-}
-
-function selecionarTamanho(elemento){
-
-    document.querySelectorAll('.tamanho').forEach(item=>{
-        item.classList.remove('ativo');
-    });
-
-    elemento.classList.add('ativo');
-
-    tamanhoSelecionado = elemento.innerText;
-}
-
-function enviarWhatsapp(){
-
-    if(carrinho.length === 0){
-
-        alert("Adicione itens ao carrinho.");
-
-        return;
-    }
-
-   let mensagem = `🛍️ *NOVO PEDIDO - CAMINHO DOS CÉUS*%0A%0A`;
-
-carrinho.forEach((item, index) => {
-
-```
-mensagem +=
-```
-
-`*Item ${index + 1}*%0A` +
-`👕 Produto: Camiseta Caminho dos Céus%0A` +
-`🎨 Cor: ${item.cor}%0A` +
-`📏 Tamanho: ${item.tamanho}%0A` +
-`🔢 Quantidade: ${item.quantidade}%0A%0A`;
 
 });
-
-mensagem +=
-`-----------------------------------%0A` +
-`Por favor, informar:%0A` +
-`📍 Cidade para entrega%0A` +
-`🚚 Forma de envio desejada%0A%0A` +
-`Aguardo a confirmação do pedido. 😊`;
-
-window.open(
-`https://wa.me/5534988940245?text=${mensagem}`,
-'_blank'
-);
-}
 </script>
 
 <!--footer-->
@@ -934,6 +894,5 @@ window.open(
         </p>
     </div>
 </footer>
-
 </body>
 </html>
