@@ -272,8 +272,14 @@ section[id]:not(:last-child){
     max-width:1300px;
     margin:auto;
     padding:20px;
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(350px,350px));
+
+    justify-content:center;
+
     gap:30px;
 }
 
@@ -285,6 +291,10 @@ section[id]:not(:last-child){
     transition:.3s;
     border:1px solid #f3d9e3;
     position:relative;
+
+    min-height:850px;
+    display:flex;
+    flex-direction:column;
 }
 
 .card:hover{
@@ -294,12 +304,13 @@ section[id]:not(:last-child){
 
 .card img{
     width:100%;
-    height:350px;
     object-fit:cover;
 }
 
 .card-body{
     padding:25px;
+    display:flex;
+    flex-direction:column;
 }
 
 .card h3{
@@ -312,6 +323,8 @@ section[id]:not(:last-child){
     color:#666;
     margin-bottom:20px;
     line-height:1.6;
+
+    min-height:75px; /* mesma altura para descrições */
 }
 
 .card label{
@@ -344,6 +357,8 @@ section[id]:not(:last-child){
     display:flex;
     flex-direction:column;
     gap:10px;
+
+    min-height:120px; /* mesma área para opcionais */
 }
 
 .opcionais label{
@@ -360,7 +375,7 @@ section[id]:not(:last-child){
 }
 
 .price{
-    margin-top:20px;
+    margin-top:auto; /* empurra preço para baixo */
     font-size:2rem;
     font-weight:700;
     color:#a13a63;
